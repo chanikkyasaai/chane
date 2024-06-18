@@ -2,4 +2,4 @@
 
 You can view the website at [https://chanikkyasaai.github.io/chane/](https://chanikkyasaai.github.io/chane/)
 
-Chane is a personal portfolio website showcasing projects and skills. The website includes a preloader animation, a responsive menu, and various sections for different types of content.
+CHANE is my personal portfolio website for showcasing my projects, skills & some miscellaneous 🌝. The website is responsive & it has various sections like home, tools, space-time, projects, follow.
