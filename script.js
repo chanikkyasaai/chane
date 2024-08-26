@@ -3,6 +3,7 @@ const names = ["చాణిక్య నేలపట్ల", "சாணிக�
 
 let index = 0;
 
+
 function changeText() {
     const helloText = document.getElementById('hello-text');
     const nameText = document.getElementById('name-text');
