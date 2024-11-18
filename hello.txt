@@ -1,0 +1,889 @@
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char ch,choice;
+        do{
+                printf("\n Enter the input:");
+                scanf("\n%c",&ch);
+                fflush(stdin);
+                if(ch>='A' && ch<='Z'){
+                        printf("\n The entered input is Capital letter %c",ch);
+                }
+                else if(ch>='a' && ch<='z'){
+                        printf("\n The entered input is small letter %c",ch);
+                }
+                else if(ch>='0' && ch<='9'){
+                        printf("\n The entered input is Numeric value %c",ch);
+                }
+                else if(ch=='>' || ch=='<'){
+                        printf("\n The entered input is Relational operator %c",ch);
+                }
+                else if(ch=='+' || ch=='-' || ch=='*' ||ch=='/'){
+                        printf("\n The entered input is Arithmetic operator %c",ch);
+                }
+                else if(ch=='|' || ch=='&' || ch=='!'){
+                        printf("\n The entered input is Logical operator %c",ch);
+                }
+                else
+                        printf("\n The entered input is special character %c",ch);
+
+                printf("\n Do you want to continue(y/n):");
+
+                scanf("\n%c",&choice);
+        }while(choice=='y'||choice=='Y');
+}
+
+----------------------------------2-----------------------
+#include<stdio.h>
+#include<string.h>
+int keyword(char str[]){
+        if(!strcmp(str,"int"))
+                return 1;
+        else if(!strcmp(str,"float"))
+                return 1;
+        else if(!strcmp(str,"double"))
+                return 1;
+        else if(!strcmp(str,"char"))
+                return 1;
+        else if(!strcmp(str,"do"))
+                return 1;
+        else if(!strcmp(str,"while"))
+                return 1;
+        else if(!strcmp(str,"for"))
+                return 1;
+        else if(!strcmp(str,"and"))
+                return 1;
+        else if(!strcmp(str,"or"))
+                return 1;
+        else if(!strcmp(str,"not"))
+                return 1;
+        else if(!strcmp(str,"if"))
+                return 1;
+        else if(!strcmp(str,"else"))
+                return 1;
+        return 0;
+}
+int identifier(char str[]){
+        if(str[0]>='0' && str[0]<='9')
+                return 0;
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]=='_'|| (str[i]>='a'&& str[i]<='z') || (str[i]<='A' && str[i]>='Z') ||(i!=0 && str[i]>='0' && str[i]<='9'))
+                        continue;
+                else
+                        return 0;
+        }
+        return 1;
+}
+int constant(char str[]){
+
+        for(int i=0;str[i]!='\0';i++){
+                if(!(str[i]>='0' && str[i]<='9'))
+                        return 0;
+        }
+        return 1;
+}
+int assignment(char str[]){
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]=='=')
+                        return 1;
+        }
+        return 0;
+}
+int operator(char ch[]){
+        if(ch[0]=='+'||ch[0]=='-'||ch[0]=='*'||ch[0]=='^'||ch[0]=='/')
+                return 1;
+        return 0;
+}
+int main(){
+        char temp[100];
+        int j,i=0;
+        //printf("\n Enter the input:");
+        char ch='y';
+
+        do{
+                printf("\n Enter the input: ");
+                scanf("%s",temp);
+
+                if(keyword(temp)){
+                        printf("\n \"%s\" is a keyword",temp);
+
+                }
+                else if(identifier(temp)){
+                        printf("\n \"%s\" is an Identifier",temp);
+                }
+                else if(constant(temp)){
+                        printf("\n \"%s\" ia a constant",temp);
+                }
+                else if(assignment(temp)){
+                                        printf("\n \"%s\" is assignment operator",temp);
+                                }
+                                //else if(operator(temp))
+                                //      printf("\n \"%s\" is arithmetic operator",temp);
+                                else
+                                        printf("\n Invalid \n");
+
+                                //printf("\n End of the statement\n");
+                                printf("\n Enter the choice:");
+                                scanf(" %c",&ch);
+                                char c;
+                                scanf("%c" ,&c);
+                        }while(ch=='y');
+                }
+-----------------------3-----------------------
+#include<stdio.h>
+#include<string.h>
+int keyword(char str[]){
+        if(!strcmp(str,"int"))
+                return 1;
+        else if(!strcmp(str,"float"))
+                return 1;
+        else if(!strcmp(str,"double"))
+                return 1;
+        else if(!strcmp(str,"char"))
+                return 1;
+        else if(!strcmp(str,"do"))
+                return 1;
+        else if(!strcmp(str,"while"))
+                return 1;
+        else if(!strcmp(str,"for"))
+                return 1;
+        else if(!strcmp(str,"and"))
+                return 1;
+        else if(!strcmp(str,"or"))
+                return 1;
+        else if(!strcmp(str,"not"))
+                return 1;
+        else if(!strcmp(str,"if"))
+                return 1;
+        else if(!strcmp(str,"else"))
+                return 1;
+        else if(!strcmp(str,"unsigned"))
+                return 1;
+        return 0;
+}
+int identifier(char str[]){
+        if(str[0]>='0' && str[0]<='9')
+                return 0;
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]=='_'|| (str[i]>='a'&& str[i]<='z') || (str[i]<='A' && str[i]>='Z') ||(i!=0 && str[i]>='0' && str[i]<='9'))
+                        continue;
+                else
+                        return 0;
+        }
+                return 1;
+        }
+        int constant(char str[]){
+                for(int i=0;str[i]!='\0';i++){
+                        if(!(str[i]>='0' && str[i]<='9'))
+                                return 0;
+                }
+                return 1;
+        }
+        int assignment(char str[]){
+                for(int i=0;str[i]!='\0';i++){
+                        if(str[i]=='=')
+                                return 1;
+                }
+                return 0;
+        }
+        int operator(char ch){
+                return (ch=='+'||ch=='-'||ch=='*'||ch=='^'||ch=='/');
+        }
+        int spcharacter(char ch){
+                return (ch==';'||ch==':');
+        }
+        int main(){
+                char str[100],temp[100];
+                int j,i=0;
+                char ch='y';
+
+
+                while(ch=='y'){
+                        printf("\n Enter the input: ");
+                        scanf("%[^\n]s",str);
+                        for(i=0;str[i]!='\0';i++){
+                                if(str[i]==' ' && str[i-1]==' ')
+                                        continue;
+                                if(str[i]=='=' || str[i]==';'|| operator(str[i])){
+                                        temp[j++]=str[i];
+                                        temp[j]='\0';
+                                        j=0;
+                                }
+                                else if(str[i]==' '){
+                                        temp[j]='\0';
+                                        j=0;
+                                 }
+
+                                 else if(operator(str[i+1]) || str[i+1]=='='|| str[i+1]==';'){
+                                         temp[j++]=str[i];
+                                         temp[j]='\0';
+                                         j=0;
+                                 }
+                                 else{
+                                         temp[j++]=str[i];
+                                         if(str[i+1]=='\0'){
+                                                 temp[j]='\0';
+                                                 j=0;
+                                         }
+                                         else
+                                         continue;
+                                 }
+
+                         if(keyword(temp)){
+                                 printf("\n \"%s\" is a keyword",temp);
+
+                         }
+                         else if(identifier(temp)){
+                                 printf("\n \"%s\" is an Identifier",temp);
+                         }
+                         else if(constant(temp)){
+                                 printf("\n \"%s\" ia a constant",temp);
+                         }
+                         else if(assignment(temp)){
+                                 printf("\n \"%s\" is assignment operator",temp);
+                         }
+                         else if(operator(temp[0]))
+                                 printf("\n \"%s\" is arithmetic operator",temp);
+                         else if(spcharacter(temp[0]))
+                                 printf("\n \"%s\" Special Character\n",temp);
+                         else
+                                 printf("\n Invalid");
+                         }
+                         //printf("\n End of the statement\n");
+               printf("\n Enter the choice:");
+                               scanf(" %c",&ch);
+                               char c;
+                       scanf("%c" ,&c);
+                       }
+               }
+
+
+--------------------------------------4-----------------
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+typedef struct table {
+    char name[25];
+    int token;
+    char type[25];
+} symboltable;
+int keyword(char str[]) {
+    if (!strcmp(str, "int") || !strcmp(str, "float") || !strcmp(str, "double") || !strcmp(str, "char"))
+           return 1;
+    else if(!strcmp(str, "for") || !strcmp(str, "while") || !strcmp(str, "do") || !strcmp(str, "if") || !strcmp(str, "else")) {
+        return 1;
+    }
+    else if(!strcmp(str,"break") || !strcmp(str,"continue"))
+            return 1;
+    return 0;
+}
+int spchar(char ch) {
+    return ch == ';'|| ch==':';
+}
+int operator(char ch) {
+    return ch == '+' || ch == '=' || ch == '-' || ch == '*' || ch == '/'|| ch=='^';
+}
+int identifier(char str[]) {
+    if (spchar(str[0]) || operator(str[0]) || isdigit(str[0]))
+        return 0;
+    for (int i = 1; str[i] != '\0'; i++) {
+        if (str[i] == '_' || isalpha(str[i]) || isdigit(str[i])) {
+            continue;
+        }
+        else {
+            return 0;
+        }
+    }
+    return 1;
+}
+int constant(char str[]) {
+    int i = 0;
+       if (str[i] == '-' || str[i] == '+') {
+            i++;
+        }
+        if (str[i] == '\0' || !isdigit(str[i])) {
+            return 0;
+        }
+        for (; str[i] != '\0'; i++) {
+            if (!isdigit(str[i])) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    void display(symboltable *t, int k) {
+            printf("\n---------------------------|");
+        printf("\n|Variable | Token | type");
+        printf("\n|--------------------------|");
+        for (int i = 0; i < k; i++) {
+            printf("\n|%s\t|%d\t|%s", t[i].name, t[i].token, t[i].type);
+            printf("\n|-----------------------------|");
+        }
+    }
+    int main() {
+        symboltable t[10];
+        char str[100], temp[100];
+        int i = 0, j = 0, k = 0;
+        char ch = 'y';
+        while (ch == 'y') {
+            printf("\nEnter the input: ");
+            scanf(" %[^\n]s", str);
+            k=0;
+            for (i = 0; str[i] != '\0'; i++) {
+                if (isspace(str[i]) || operator(str[i]) || spchar(str[i])) {
+                    if (j > 0) {
+                        temp[j] = '\0';
+                        j = 0;
+                        if (keyword(temp)) {
+                            strcpy(t[k].name, temp);
+                            t[k].token = 0;
+                            strcpy(t[k].type, "Keyword");
+                                  k++;
+                              } else if (identifier(temp)) {
+                                  strcpy(t[k].name, temp);
+                                  t[k].token = 1;
+                                  strcpy(t[k].type, "Identifier");
+                                  k++;
+                              } else if (constant(temp)) {
+                                  strcpy(t[k].name, temp);
+                                  t[k].token = 2;
+                                  strcpy(t[k].type, "Constant");
+                                  k++;
+                              } else {
+                                  printf("\nInvalid token: %s", temp);
+                              }
+                          }
+
+                          if (operator(str[i])) {
+                              temp[0] = str[i];
+                              temp[1] = '\0';
+                              strcpy(t[k].name, temp);
+                              t[k].token = 3;
+                              strcpy(t[k].type, "Operator");
+                              k++;
+                          } else if (spchar(str[i])) {
+                              temp[0] = str[i];
+                              temp[1] = '\0';
+                              strcpy(t[k].name, temp);
+                              t[k].token = 4;
+                              strcpy(t[k].type, "Special Character");
+                              k++;
+                          }
+                      } else {
+                          temp[j++] = str[i];
+                      }
+                  }
+                  if (j > 0) {
+                      temp[j] = '\0';
+                      j=0;
+                      if (keyword(temp)) {
+                          strcpy(t[k].name, temp);
+                           t[k].token = 0;
+                           strcpy(t[k].type, "Keyword");
+                           k++;
+                       } else if (identifier(temp)) {
+                           strcpy(t[k].name, temp);
+                           t[k].token = 1;
+                           strcpy(t[k].type, "Identifier");
+                           k++;
+                       } else if (constant(temp)) {
+                           strcpy(t[k].name, temp);
+                           t[k].token = 2;
+                           strcpy(t[k].type, "Constant");
+                           k++;
+                       } else {
+                           printf("\nInvalid token: %s", temp);
+                       }
+                   }
+                   display(t, k);
+                   printf("\nEnter your choice (y/n): ");
+                   scanf(" %c", &ch);
+               }
+               return 0;
+           }
+
+--------------------------------------5-----------------------------
+%{
+int op=0,i;
+float a,b;
+void digi();
+%}
+
+dig [0-9]+|([0-9]*)"."([0-9]+)
+add "+"
+sub "-"
+mul "*"
+div "/"
+pow "^"
+ln \n
+%%
+{dig} {digi();}
+{add} {op=1;}
+{sub} {op=2;}
+{mul} {op=3;}
+{div} {op=4;}
+{pow} {op=5;}
+{ln} {printf("\n Answer:%.3f\n",a);}
+%%
+
+void digi(){
+if(op==0)
+        a=atof(yytext);
+else{
+        b=atof(yytext);
+        switch(op){
+                case 1:
+                a=a+b;
+                break;
+                case 2:
+                a=a-b;
+                break;
+                case 3:
+                a=a*b;
+                break;
+                case 4:
+                a=a/b;
+                                break;
+                                case 5:
+                                for(i=a;b>1;b--)
+                                a=a*i;
+                                break;
+                                default:
+                                break;
+                        }
+                        op=0;
+                }
+                }
+                void main(int argv,char *argc[]){
+                yylex();
+                }
+                int yywrap(){
+                return 1;
+                }
+------------------------6-----------------------------
+#include<stdio.h>
+#include<stdbool.h>
+#include<string.h>
+
+void gettable(int tt[][3],int statesCount)
+{
+        int i= 0;
+        printf("\nEnter the transition for the states \n\t0 1  \n\n");
+        for(i = 0 ;i < statesCount ; i++)
+        {
+                printf("%d\t",tt[i][0]);
+                scanf("%d%d",&tt[i][1],&tt[i][2]);
+        }
+}
+
+void check(int tt[][3] ,int startState, int finalState, char input[])
+{
+        int state = startState ;
+        for(int i = 0; i < strlen(input) ; i++)
+        {
+                int in = input[i]-'0';
+                if(in == 0 || in == 1)
+                        state = tt[state][in+1];
+        }
+
+        if(state == finalState)
+                printf("Accepted\n");
+        else
+                printf("Rejeced\n");
+}
+void main()
+{
+        int stateCount = 0;
+        int finalState = 0;
+        int startState = 0;
+
+        printf("Enter number of states : ");
+        scanf("%d",&stateCount);
+
+        int TT[stateCount][3];
+        int states[stateCount];
+        int i = 0;
+        for(i = 0 ;i < stateCount ; i++)
+        {
+                printf("Enter state %d : ",i);
+                scanf("%d",&states[i]);
+                TT[i][0] = states[i];
+        }
+
+        printf("Enter the start state : ");
+        scanf("%d",&startState);
+        printf("Enter the end state: ");
+        scanf("%d",&finalState);
+
+
+        gettable(TT,stateCount);
+
+        int ch = 1;
+        do
+ {
+                char input[1024];
+                printf("Enter the input : ");
+                scanf("%s",input);
+
+                check(TT,startState,finalState,input);
+
+
+
+                printf("Do you want to continue your choice(0/1) : \n");
+                scanf("%d",&ch);
+        }while(ch == 1);
+}
+
+--------------------------7-----------------
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_STATES 100
+#define MAX_SYMBOLS 10
+
+int n_states, n_symbols;
+int dfa[MAX_STATES][MAX_SYMBOLS];
+int final_states[MAX_STATES];
+bool is_final[MAX_STATES];
+int minimized_dfa[MAX_STATES][MAX_SYMBOLS];
+
+bool are_distinguishable(int state1, int state2, bool distinguishable[MAX_STATES][MAX_STATES]) {
+    for (int symbol = 0; symbol < n_symbols; symbol++) {
+        int next_state1 = dfa[state1][symbol];
+        int next_state2 = dfa[state2][symbol];
+        if (distinguishable[next_state1][next_state2]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void minimize_dfa() {
+    bool distinguishable[MAX_STATES][MAX_STATES] = { false };
+
+    for (int i = 0; i < n_states; i++) {
+        for (int j = i + 1; j < n_states; j++) {
+            if (is_final[i] != is_final[j]) {
+                distinguishable[i][j] = distinguishable[j][i] = true;
+            }
+        }
+    }
+
+    bool updated;
+    do {
+        updated = false;
+        for (int i = 0; i < n_states; i++) {
+            for (int j = i + 1; j < n_states; j++) {
+                if (!distinguishable[i][j] && are_distinguishable(i, j, distinguishable)) {
+                    distinguishable[i][j] = distinguishable[j][i] = true;
+                    updated = true;
+                }
+            }
+        }
+    } while (updated);
+
+
+    int representative[MAX_STATES];
+    for (int i = 0; i < n_states; i++) {
+        representative[i] = i;
+        for (int j = 0; j < i; j++) {
+            if (!distinguishable[i][j]) {
+                representative[i] = representative[j];
+                break;
+            }
+        }
+    }
+
+
+    int new_state_count = 0;
+    int new_state_map[MAX_STATES];
+    for (int i = 0; i < n_states; i++) {
+        if (representative[i] == i) {
+            new_state_map[i] = new_state_count++;
+        } else {
+            new_state_map[i] = new_state_map[representative[i]];
+        }
+    }
+
+    for (int i = 0; i < new_state_count; i++) {
+        for (int symbol = 0; symbol < n_symbols; symbol++) {
+            minimized_dfa[i][symbol] = new_state_map[representative[dfa[i][symbol]]];
+        }
+    }
+
+
+    printf("Minimized DFA:\n");
+    printf("Number of states: %d\n", new_state_count);
+    printf("  ");
+     for(int i=0;i<n_symbols;i++)
+     printf("%d ",i);
+     for (int i = 0; i < new_state_count; i++) {
+             printf("\n%d ",i);
+         for (int symbol = 0; symbol < n_symbols; symbol++) {
+             printf("%d ", minimized_dfa[i][symbol]);
+         }
+     }
+ }
+
+ int main() {
+     printf("Enter the number of states: ");
+     scanf("%d", &n_states);
+
+     printf("Enter the number of symbols: ");
+     scanf("%d", &n_symbols);
+
+     printf("Enter the DFA transition table:\n");
+     printf("   ");
+     for(int i=0;i<n_symbols;i++)
+             printf("%d ",i);
+     for (int i = 0; i < n_states; i++) {
+             printf("\n%d ",i);
+         for (int j = 0; j < n_symbols; j++) {
+             scanf("%d", &dfa[i][j]);
+         }
+     }
+
+     int n_final;
+     printf("Enter the number of final states: ");
+     scanf("%d", &n_final);
+
+     printf("Enter the final states: ");
+     for (int i = 0; i < n_final; i++) {
+         scanf("%d", &final_states[i]);
+         is_final[final_states[i]] = true;
+     }
+
+     minimize_dfa();
+    return 0;
+}
+--------------8--------------------------#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+void followfirst(char, int, int);
+void follow(char c);
+
+void findfirst(char, int, int);
+
+int count, n = 0;
+
+char calc_first[10][100];
+
+char calc_follow[10][100];
+int m = 0;
+
+char production[10][10];
+char f[10], first[10];
+int k;
+char ck;
+int e;
+
+int main()
+{
+        int jm = 0;
+        int km = 0;
+        int i, choice;
+        char c, ch;
+        count = 8;
+        printf("\n Enter the number of production:");
+        scanf("%d",&count);
+        // The Input grammar
+        //strcpy(production[0], "X=TnS");
+        //strcpy(production[1], "X=Rm");
+        //strcpy(production[2], "T=q");
+        //strcpy(production[3], "T=#");
+        //strcpy(production[4], "S=p");
+        //strcpy(production[5], "S=#");
+        //strcpy(production[6], "R=om");
+        //strcpy(production[7], "R=ST");
+                for(int i=0;i<count;i++){
+                        scanf(" %s",production[i]);
+                }
+                int kay;
+                char done[count];
+                int ptr = -1;
+
+                for (k = 0; k < count; k++) {
+                        for (kay = 0; kay < 100; kay++) {
+                                calc_first[k][kay] = '!';
+                        }
+                }
+                int point1 = 0, point2, xxx;
+
+                for (k = 0; k < count; k++) {
+                        c = production[k][0];
+                        point2 = 0;
+                        xxx = 0;
+
+                        for (kay = 0; kay <= ptr; kay++)
+                                if (c == done[kay])
+                                        xxx = 1;
+
+                        if (xxx == 1)
+                                continue;
+
+                        findfirst(c, 0, 0);
+                        ptr += 1;
+
+                        done[ptr] = c;
+                        printf("\n First(%c) = { ", c);
+                        calc_first[point1][point2++] = c;
+
+                        for (i = 0 + jm; i < n; i++) {
+                                int lark = 0, chk = 0;
+
+                                for (lark = 0; lark < point2; lark++) {
+
+                                        if (first[i] == calc_first[point1][lark]) {
+                                                chk = 1;
+                                        break;
+                                }
+                        }
+                        if (chk == 0) {
+                                printf("%c ", first[i]);
+                                calc_first[point1][point2++] = first[i];
+                        }
+                }
+                printf("}\n");
+                jm = n;
+                point1++;
+        }
+        printf("\n");
+        printf("-----------------------------------------------"
+                "\n\n");
+        char donee[count];
+        ptr = -1;
+
+        for (k = 0; k < count; k++) {
+                for (kay = 0; kay < 100; kay++) {
+                        calc_follow[k][kay] = '!';
+                }
+        }
+        point1 = 0;
+        int land = 0;
+        for (e = 0; e < count; e++) {
+                ck = production[e][0];
+                point2 = 0;
+                xxx = 0;
+
+                for (kay = 0; kay <= ptr; kay++)
+                        if (ck == donee[kay])
+                                xxx = 1;
+
+                if (xxx == 1)
+                        continue;
+                land += 1;
+
+                follow(ck);
+                ptr += 1;
+                                donee[ptr] = ck;
+                                printf(" Follow(%c) = { ", ck);
+                                calc_follow[point1][point2++] = ck;
+
+                                for (i = 0 + km; i < m; i++) {
+                                        int lark = 0, chk = 0;
+                                        for (lark = 0; lark < point2; lark++) {
+                                                if (f[i] == calc_follow[point1][lark]) {
+                                                        chk = 1;
+                                                        break;
+                                                }
+                                        }
+                                        if (chk == 0) {
+                                                printf("%c ", f[i]);
+                                                calc_follow[point1][point2++] = f[i];
+                                        }
+                                }
+                                printf(" }\n\n");
+                                km = m;
+                                point1++;
+                        }
+                }
+
+                void follow(char c)
+                {
+                        int i, j;
+
+
+                        if (production[0][0] == c) {
+                                f[m++] = '$';
+                        }
+                        for (i = 0; i < 10; i++) {
+                                for (j = 2; j < 10; j++) {
+                                        if (production[i][j] == c) {
+                                                if (production[i][j + 1] != '\0') {
+
+                                                        followfirst(production[i][j + 1], i,(j + 2));
+                                                }
+
+                                                if (production[i][j + 1] == '\0' && c != production[i][0]) {
+                                                         follow(production[i][0]);
+                                                }
+                                                                        }
+                                                                }
+                                                        }
+                                                }
+
+                                                void findfirst(char c, int q1, int q2)
+                                                {
+                                                        int j;
+
+
+                                                        if (!(isupper(c))) {
+                                                                first[n++] = c;
+                                                        }
+                                                        for (j = 0; j < count; j++) {
+                                                                if (production[j][0] == c) {
+                                                                        if (production[j][2] == '#') {
+                                                                                if (production[q1][q2] == '\0')
+                                                                                        first[n++] = '#';
+                                                                                else if (production[q1][q2] != '\0' && (q1 != 0 || q2 != 0)) {
+
+                                                                                        findfirst(production[q1][q2], q1,(q2 + 1));
+                                                                                }
+                                                                                else
+                                                                                        first[n++] = '#';
+                                                                        }
+                                                                        else if (!isupper(production[j][2])) {
+                                                                                first[n++] = production[j][2];
+                                                                        }
+                                                                        else {
+
+                                                                                findfirst(production[j][2], j, 3);
+                                                                        }
+                                                                }
+                                                        }
+                                                }
+
+                                                void followfirst(char c, int c1, int c2)
+                                                {
+                                                        int k;
+                                                                if (!(isupper(c)))
+                                                                        f[m++] = c;
+                                                                else {
+                                                                        int i = 0, j = 1;
+                                                                        for (i = 0; i < count; i++) {
+                                                                                if (calc_first[i][0] == c)
+                                                                                        break;
+                                                                        }
+
+                                                                        while (calc_first[i][j] != '!') {
+                                                                                if (calc_first[i][j] != '#') {
+                                                                                        f[m++] = calc_first[i][j];
+                                                                                }
+                                                                                else {
+                                                                                        if (production[c1][c2] == '\0') {
+
+                                                                                                follow(production[c1][0]);
+                                                                                        }
+                                                                                        else {
+
+                                                                                                followfirst(production[c1][c2], c1,
+                                                                                                                        c2 + 1);
+                                                                                        }
+                                                                                }
+                                                                                j++;
+                                                                        }
+                                                                }
+                                                        }
+
